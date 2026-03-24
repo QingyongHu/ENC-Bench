@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // -- Stats counter animation (triggered when stats bar enters view) --
-  var statsBar = document.querySelector('.enc-stats-bar');
+  var statsBar = document.querySelector('.enc-stats-section');
   if (statsBar) {
     var statsAnimated = false;
     var statsObserver = new IntersectionObserver(function (entries) {

@@ -698,7 +698,158 @@ img-comparison-slider {
 .enc-data-columns { gap: 1.5rem; }
 
 /* ============================================================
-   18. RESPONSIVE
+   18. HOVER & MOTION EFFECTS
+   ============================================================ */
+
+/* Lighting mode cards — image zoom on hover */
+.enc-lighting-card {
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.enc-lighting-card:hover {
+  box-shadow: 0 8px 28px rgba(26,39,68,0.18);
+  transform: translateY(-3px);
+}
+.enc-lighting-card .enc-lighting-img {
+  transition: transform 0.45s ease;
+}
+.enc-lighting-card:hover .enc-lighting-img {
+  transform: scale(1.06);
+}
+
+/* Full-width figures — subtle lift on hover */
+.enc-full-img {
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+  will-change: transform;
+}
+figure:hover .enc-full-img {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(26,39,68,0.18);
+}
+
+/* Author cards — photo scale on hover */
+.enc-author-card .enc-author-photo-wrap {
+  transition: transform 0.3s ease;
+}
+.enc-author-card:hover .enc-author-photo-wrap {
+  transform: scale(1.05);
+}
+
+/* Breathing animation for contact avatar border */
+@keyframes enc-pulse-border {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(26,39,68,0.25); }
+  50%       { box-shadow: 0 0 0 7px rgba(26,39,68,0.07); }
+}
+
+/* Stat items — number glow on hover */
+.enc-stat-item {
+  transition: transform 0.25s ease;
+}
+.enc-stat-item:hover {
+  transform: translateY(-3px);
+}
+.enc-stat-item:hover .enc-stat-number {
+  text-shadow: 0 0 24px rgba(255,255,255,0.5);
+}
+
+/* ============================================================
+   19. CONTACT SECTION
+   ============================================================ */
+.enc-contact-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #e4e8f4;
+  border-left: 4px solid #1a2744;
+  border-radius: 14px;
+  padding: 2.2rem 2.4rem;
+  box-shadow: 0 4px 24px rgba(26,39,68,0.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.enc-contact-card:hover {
+  box-shadow: 0 10px 36px rgba(26,39,68,0.14);
+  transform: translateY(-2px);
+}
+
+.enc-contact-person {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.enc-contact-avatar {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #1a2744;
+  animation: enc-pulse-border 3s ease-in-out infinite;
+}
+.enc-contact-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.enc-contact-details {
+  flex: 1;
+}
+
+.enc-contact-name {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #1a2744;
+  margin-bottom: 0.2rem;
+}
+
+.enc-contact-role {
+  font-size: 0.88rem;
+  color: #888;
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.enc-contact-email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #1a2744;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.enc-contact-email-link:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.enc-contact-note {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.75;
+  border-top: 1px solid #eef0f7;
+  padding-top: 1.2rem;
+  margin-top: 0;
+}
+
+@media (max-width: 540px) {
+  .enc-contact-person {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  .enc-contact-card {
+    padding: 1.6rem 1.4rem;
+  }
+}
+
+/* ============================================================
+   20. RESPONSIVE
    ============================================================ */
 @media (max-width: 900px) {
   .enc-stat-item { padding: 0 1.8rem; }
