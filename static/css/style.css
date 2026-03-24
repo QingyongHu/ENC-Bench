@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   color: #333;
   line-height: 1.65;
   background: #fff;
@@ -29,11 +29,11 @@ body {
    2. TYPOGRAPHY
    ============================================================ */
 .enc-section-title {
-  font-size: 1.85rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #1a2744;
   margin-bottom: 0.5rem;
-  padding-bottom: 0.6rem;
+  padding-bottom: 0.55rem;
   border-bottom: 3px solid #1a2744;
   display: inline-block;
 }
@@ -43,18 +43,14 @@ body {
   color: #666;
   margin-bottom: 2rem;
   margin-top: 0.5rem;
+  line-height: 1.7;
 }
 
 /* ============================================================
    3. LAYOUT UTILITIES
    ============================================================ */
-.enc-section-white {
-  background: #ffffff;
-}
-
-.enc-section-light {
-  background: #f6f8fc;
-}
+.enc-section-white { background: #ffffff; }
+.enc-section-light  { background: #f6f8fc; }
 
 .enc-full-img {
   width: 100%;
@@ -65,13 +61,13 @@ body {
 
 .enc-figcaption {
   margin-top: 0.9rem;
-  font-size: 0.88rem;
+  font-size: 0.87rem;
   color: #666;
-  line-height: 1.6;
+  line-height: 1.65;
   text-align: center;
 }
 
-/* Fade-in animation on scroll */
+/* Fade-in on scroll */
 .enc-fade-in {
   opacity: 0;
   transform: translateY(28px);
@@ -83,12 +79,74 @@ body {
 }
 
 /* ============================================================
-   4. HERO
+   4. STICKY NAV
+   ============================================================ */
+.enc-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e4e8f4;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.enc-nav-brand {
+  font-weight: 800;
+  color: #1a2744;
+  font-size: 0.95rem;
+  letter-spacing: -0.3px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.enc-nav-cvpr {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: #1a2744;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  line-height: 1.8;
+}
+
+.enc-nav-links {
+  display: flex;
+  gap: 1.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.enc-nav-links a {
+  font-size: 0.85rem;
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.enc-nav-links a:hover,
+.enc-nav-links a.enc-nav-active {
+  color: #1a2744;
+  font-weight: 600;
+}
+
+/* ============================================================
+   5. HERO
    ============================================================ */
 .enc-hero {
   background: #fff;
   border-bottom: 1px solid #e8eaf0;
-  padding: 3.5rem 1.5rem 3rem;
+  padding: 3.5rem 1.5rem 0;
 }
 
 .enc-conference-badge {
@@ -96,48 +154,43 @@ body {
   background: #1a2744;
   color: #fff;
   border-radius: 20px;
-  padding: 5px 18px;
-  font-size: 0.78rem;
+  padding: 5px 20px;
+  font-size: 0.77rem;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.8px;
   text-transform: uppercase;
   margin-bottom: 1.4rem;
 }
 
 .enc-title {
-  font-family: 'Inter', sans-serif;
   font-size: 2rem;
   font-weight: 800;
   color: #1a2744;
-  line-height: 1.25;
+  line-height: 1.24;
   margin-bottom: 1.4rem;
 }
 
 .enc-authors {
   font-size: 1.05rem;
   color: #333;
-  margin-bottom: 0.5rem;
-  line-height: 1.8;
+  margin-bottom: 0.4rem;
+  line-height: 1.9;
 }
 
-.enc-author {
-  white-space: nowrap;
-}
+.enc-author { white-space: nowrap; }
 
 .enc-author-link {
   color: #1a2744;
   text-decoration: none;
   font-weight: 500;
   border-bottom: 1px solid transparent;
-  transition: border-color 0.2s;
+  transition: border-color 0.18s;
 }
-.enc-author-link:hover {
-  border-bottom-color: #1a2744;
-}
+.enc-author-link:hover { border-bottom-color: #1a2744; }
 
 .enc-author-note {
   font-size: 0.82rem;
-  color: #888;
+  color: #999;
   margin-bottom: 1rem;
 }
 
@@ -165,6 +218,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.75rem;
+  margin-bottom: 2rem;
 }
 
 .enc-btn-primary {
@@ -213,15 +267,48 @@ body {
   color: #1a2744 !important;
 }
 
-/* ============================================================
-   5. TEASER
-   ============================================================ */
-.enc-teaser-figure {
-  margin: 0;
+/* CVPR venue photo in hero */
+.enc-venue-bar {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.enc-venue-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  display: block;
+  filter: brightness(0.55);
+}
+
+.enc-venue-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enc-venue-text {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
 
 /* ============================================================
-   6. ABSTRACT
+   6. TEASER
+   ============================================================ */
+.enc-teaser-figure { margin: 0; }
+
+/* ============================================================
+   7. ABSTRACT
    ============================================================ */
 .enc-abstract-body {
   font-size: 1.02rem;
@@ -230,24 +317,32 @@ body {
   max-width: 820px;
   margin: 0 auto;
 }
-.enc-abstract-body p {
-  margin-bottom: 1rem;
-}
+.enc-abstract-body p { margin-bottom: 1rem; }
 
 /* ============================================================
-   7. STATS BAR
+   8. STATS BAR
    ============================================================ */
-.enc-stats-bar {
+.enc-stats-section {
   background: #1a2744;
-  padding: 2.8rem 1.5rem;
+  padding: 2.4rem 1.5rem;
+}
+
+.enc-stats-heading {
+  text-align: center;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
 }
 
 .enc-stats-inner {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  max-width: 900px;
+  flex-wrap: nowrap;      /* force single row */
+  max-width: 860px;
   margin: 0 auto;
 }
 
@@ -255,21 +350,22 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem 3.5rem;
+  padding: 0 3.5rem;
 }
 
 .enc-stat-number {
-  font-size: 2.6rem;
+  font-size: 2.7rem;
   font-weight: 800;
   color: #fff;
   line-height: 1;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
+  font-variant-numeric: tabular-nums;
 }
 
 .enc-stat-label {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.7);
-  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.65);
+  margin-top: 0.45rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   font-weight: 500;
@@ -277,17 +373,24 @@ body {
 
 .enc-stat-divider {
   width: 1px;
-  height: 56px;
-  background: rgba(255,255,255,0.2);
+  height: 52px;
+  background: rgba(255,255,255,0.18);
   flex-shrink: 0;
 }
 
 /* ============================================================
-   8. COMPARISON SLIDER
+   9. PIPELINE
+   ============================================================ */
+.enc-pipeline-img {
+  max-width: 100%;
+}
+
+/* ============================================================
+   10. COMPARISON SLIDER
    ============================================================ */
 .enc-slider-wrapper {
-  max-width: 900px;
-  margin: 2rem auto 0;
+  max-width: 100%;
+  margin: 0 auto 2rem;
 }
 
 img-comparison-slider {
@@ -304,7 +407,6 @@ img-comparison-slider {
 .enc-slider-panel {
   position: relative;
   overflow: hidden;
-  height: 420px;
 }
 
 .enc-slider-img {
@@ -312,25 +414,19 @@ img-comparison-slider {
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-.enc-slider-img--left {
-  object-position: 0% center;
-}
-
-.enc-slider-img--right {
-  object-position: 100% center;
+  min-height: 320px;
+  max-height: 480px;
 }
 
 .enc-slider-label {
   position: absolute;
   bottom: 14px;
   left: 14px;
-  background: rgba(26, 39, 68, 0.85);
+  background: rgba(26, 39, 68, 0.82);
   color: #fff;
   padding: 5px 14px;
   border-radius: 5px;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.3px;
   pointer-events: none;
@@ -342,118 +438,71 @@ img-comparison-slider {
   right: 14px;
 }
 
-/* ============================================================
-   9. BENCHMARK RESULTS
-   ============================================================ */
-.enc-results-figure {
-  margin-bottom: 2.5rem;
+/* Lighting modes */
+.enc-lighting-section {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
 }
 
-.enc-results-table {
-  font-size: 0.92rem;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.enc-results-table thead th {
-  background: #1a2744;
-  color: #fff;
-  font-weight: 600;
-  border: none;
-  padding: 0.85rem 1rem;
-  font-size: 0.88rem;
-  letter-spacing: 0.3px;
-}
-
-.enc-results-table tbody td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #eee;
-  vertical-align: middle;
-}
-
-.enc-results-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.enc-top-score {
+.enc-lighting-title {
+  font-size: 1.2rem;
   font-weight: 700;
   color: #1a2744;
+  margin-bottom: 0.3rem;
 }
 
-.enc-table-wrapper {
-  margin-top: 2rem;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #e0e4f0;
+.enc-lighting-subtitle {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1.2rem;
 }
 
-.enc-table-note {
-  font-size: 0.8rem;
-  color: #999;
-  margin-top: 0.6rem;
-  font-style: italic;
+.enc-lighting-grid {
+  gap: 1rem;
 }
 
-/* ============================================================
-   10. DATASET GALLERY
-   ============================================================ */
-.enc-gallery-item {
-  display: block;
-  overflow: hidden;
+.enc-lighting-card {
   border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(26,39,68,0.09);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
-  cursor: zoom-in;
+  overflow: hidden;
+  box-shadow: 0 3px 16px rgba(26,39,68,0.1);
   background: #fff;
-  text-decoration: none !important;
 }
 
-.enc-gallery-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(26,39,68,0.16);
-}
-
-.enc-gallery-thumb {
+.enc-lighting-img {
   width: 100%;
+  display: block;
   height: 200px;
   object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
 }
 
-.enc-gallery-item:hover .enc-gallery-thumb {
-  transform: scale(1.04);
-}
-
-.enc-gallery-caption {
-  padding: 8px 12px 10px;
-  background: #fff;
-  font-size: 0.8rem;
-  color: #555;
+.enc-lighting-label {
   text-align: center;
-  border-top: 1px solid #f0f0f0;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+  padding: 8px 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
-/* SimpleLightbox overrides */
-.sl-overlay {
-  background: rgba(10, 16, 35, 0.94) !important;
+.enc-mode-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
 }
-.sl-close,
-.sl-navigation button {
-  color: #fff !important;
-}
-.sl-caption {
-  background: rgba(26,39,68,0.85) !important;
-  color: #fff !important;
-}
+.enc-mode-day   { background: #f5c842; }
+.enc-mode-dusk  { background: #e07040; }
+.enc-mode-night { background: #2d6ec7; }
 
 /* ============================================================
-   11. DATA STATISTICS
+   11. BENCHMARK RESULTS
    ============================================================ */
-.enc-data-columns {
-  gap: 1.5rem;
-}
+.enc-results-figure { margin-bottom: 0; }
 
 /* ============================================================
    12. BIBTEX
@@ -476,7 +525,7 @@ img-comparison-slider {
 
 .enc-bibtex-label {
   color: rgba(255,255,255,0.85);
-  font-size: 0.78rem;
+  font-size: 0.77rem;
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -491,9 +540,7 @@ img-comparison-slider {
   font-weight: 600 !important;
   transition: background 0.2s !important;
 }
-.enc-copy-btn:hover {
-  background: rgba(255,255,255,0.22) !important;
-}
+.enc-copy-btn:hover { background: rgba(255,255,255,0.22) !important; }
 .enc-copy-btn.is-success {
   background: #48c774 !important;
   border-color: #48c774 !important;
@@ -511,7 +558,6 @@ img-comparison-slider {
   white-space: pre;
   border-radius: 0;
 }
-
 .enc-bibtex-block code {
   background: none;
   padding: 0;
@@ -522,13 +568,8 @@ img-comparison-slider {
 /* ============================================================
    13. AUTHOR CARDS
    ============================================================ */
-.enc-author-grid {
-  row-gap: 1.5rem !important;
-}
-
-.enc-author-card-col {
-  padding: 0.5rem !important;
-}
+.enc-author-grid { row-gap: 1.5rem !important; }
+.enc-author-card-col { padding: 0.5rem !important; }
 
 .enc-author-card {
   text-align: center;
@@ -557,10 +598,7 @@ img-comparison-slider {
   margin: 0 auto 0.9rem;
   border: 3px solid #e4e8f4;
 }
-
-.enc-author-card--contact .enc-author-photo-wrap {
-  border-color: #1a2744;
-}
+.enc-author-card--contact .enc-author-photo-wrap { border-color: #1a2744; }
 
 .enc-author-photo {
   width: 100%;
@@ -579,7 +617,6 @@ img-comparison-slider {
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: -1px;
 }
 
 .enc-author-name {
@@ -592,7 +629,6 @@ img-comparison-slider {
 .enc-author-affil {
   font-size: 0.77rem;
   color: #999;
-  margin-bottom: 0;
 }
 
 .enc-contact-link {
@@ -606,10 +642,7 @@ img-comparison-slider {
   word-break: break-all;
   transition: opacity 0.2s;
 }
-.enc-contact-link:hover {
-  opacity: 0.7;
-  text-decoration: underline;
-}
+.enc-contact-link:hover { opacity: 0.7; text-decoration: underline; }
 
 /* ============================================================
    14. VISITOR MAP
@@ -631,7 +664,7 @@ img-comparison-slider {
 
 .enc-clustrmap-container {
   display: inline-block;
-  max-width: 350px;
+  max-width: 400px;
 }
 
 /* ============================================================
@@ -639,125 +672,73 @@ img-comparison-slider {
    ============================================================ */
 .enc-footer {
   background: #1a2744;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.5);
   padding: 1.4rem 1.5rem;
   font-size: 0.82rem;
   text-align: center;
 }
-
 .enc-footer a {
   color: rgba(255,255,255,0.75);
   text-decoration: none;
   border-bottom: 1px solid rgba(255,255,255,0.3);
   transition: color 0.2s;
 }
-.enc-footer a:hover {
-  color: #fff;
-}
+.enc-footer a:hover { color: #fff; }
 
 /* ============================================================
-   16. STICKY NAV (minimal)
+   16. SIMPLELIGHTBOX OVERRIDES
    ============================================================ */
-.enc-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid #e4e8f4;
-  padding: 0.7rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.enc-nav-brand {
-  font-weight: 800;
-  color: #1a2744;
-  font-size: 0.92rem;
-  letter-spacing: -0.3px;
-  text-decoration: none;
-}
-
-.enc-nav-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.enc-nav-links a {
-  font-size: 0.85rem;
-  color: #555;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-.enc-nav-links a:hover {
-  color: #1a2744;
-}
+.sl-overlay { background: rgba(10, 16, 35, 0.94) !important; }
+.sl-close, .sl-navigation button { color: #fff !important; }
+.sl-caption { background: rgba(26,39,68,0.85) !important; color: #fff !important; }
 
 /* ============================================================
-   17. RESPONSIVE
+   17. DATA COLUMNS
    ============================================================ */
+.enc-data-columns { gap: 1.5rem; }
+
+/* ============================================================
+   18. RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .enc-stat-item { padding: 0 1.8rem; }
+  .enc-stat-number { font-size: 2.2rem; }
+}
+
 @media (max-width: 768px) {
-  .enc-title {
-    font-size: 1.5rem;
-  }
+  .enc-title { font-size: 1.5rem; }
+  .enc-section-title { font-size: 1.4rem; }
 
-  .enc-stat-item {
-    padding: 0.8rem 1.5rem;
-  }
-
-  .enc-stat-divider {
-    display: none;
-  }
-
+  /* Stats: switch to 2x2 grid on mobile */
   .enc-stats-inner {
+    flex-wrap: wrap;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    gap: 1rem;
     justify-items: center;
   }
+  .enc-stat-divider { display: none; }
+  .enc-stat-item { padding: 0.6rem 1rem; }
+  .enc-stat-number { font-size: 2rem; }
 
-  .enc-stat-number {
-    font-size: 2rem;
-  }
+  .enc-slider-img { min-height: 200px; max-height: 280px; }
 
-  .enc-slider-panel {
-    height: 260px;
-  }
+  .enc-nav-links { display: none; }
 
-  .enc-nav-links {
-    display: none;
-  }
+  .enc-venue-bar { height: 80px; }
 
-  .enc-gallery-thumb {
-    height: 160px;
-  }
+  .enc-lighting-img { height: 150px; }
 
-  .enc-author-card-col {
-    padding: 0.4rem !important;
-  }
-
-  .enc-section-title {
-    font-size: 1.45rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .enc-stat-item {
-    padding: 0.6rem 1rem;
-  }
-
-  .enc-bibtex-block {
-    font-size: 0.72rem;
-    padding: 1rem;
-  }
+  .enc-author-card-col { padding: 0.4rem !important; }
 
   .enc-button-row .button {
     font-size: 0.82rem !important;
     padding: 0.5rem 1rem !important;
   }
+}
+
+@media (max-width: 480px) {
+  .enc-bibtex-block { font-size: 0.7rem; padding: 1rem; }
+  .enc-stat-number { font-size: 1.7rem; }
+  .enc-venue-bar { display: none; }
 }

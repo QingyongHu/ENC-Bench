@@ -3,38 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ENC-Bench: Evaluating MLLMs on Electronic Navigational Charts (CVPR 2026)</title>
-  <meta name="description" content="ENC-Bench is the first benchmark for evaluating Multimodal Large Language Models on Electronic Navigational Chart understanding. 20,490 samples, 840 NOAA charts, 10 task types. CVPR 2026." />
-  <meta property="og:title" content="ENC-Bench: A Benchmark for Evaluating MLLMs in ENC Understanding" />
-  <meta property="og:description" content="The first benchmark dedicated to professional Electronic Navigational Chart understanding. CVPR 2026." />
+  <title>ENC-Bench: Evaluating MLLMs on Electronic Navigational Charts · CVPR 2026</title>
+  <meta name="description" content="ENC-Bench — the first benchmark for evaluating Multimodal Large Language Models on Electronic Navigational Chart understanding. 20,490 samples, 840 NOAA charts, 10 task types. CVPR 2026." />
+  <meta property="og:title" content="ENC-Bench · CVPR 2026" />
+  <meta property="og:description" content="The first benchmark dedicated to professional Electronic Navigational Chart understanding." />
   <meta property="og:image" content="static/images/teaser-overview.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Preload critical above-fold image -->
+  <link rel="preload" as="image" href="static/images/teaser-overview.png" fetchpriority="high" />
 
-  <!-- Bulma CSS -->
+  <!-- DNS prefetch for CDNs -->
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
+  <!-- Bulma CSS (layout — must be render-blocking) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+  <!-- Project CSS (must be render-blocking) -->
+  <link rel="stylesheet" href="static/css/style.css" />
 
-  <!-- Academicons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <!-- Non-render-blocking: Google Fonts (page renders with system fonts if blocked) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  </noscript>
 
-  <!-- SimpleLightbox -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.css" crossorigin="anonymous" />
+  <!-- Non-render-blocking: Font Awesome -->
+  <link rel="preload"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
+        crossorigin="anonymous" />
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+  </noscript>
 
-  <!-- img-comparison-slider styles -->
+  <!-- Non-render-blocking: Academicons -->
+  <link rel="preload"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  </noscript>
+
+  <!-- Non-render-blocking: SimpleLightbox CSS -->
+  <link rel="preload"
+        href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.css"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
+        crossorigin="anonymous" />
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.css" crossorigin="anonymous" />
+  </noscript>
+
+  <!-- img-comparison-slider CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
 
-  <!-- img-comparison-slider web component (must be in head to register before body parse) -->
+  <!-- img-comparison-slider web component (module = deferred, non-blocking) -->
   <script type="module" src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
-
-  <!-- Project CSS -->
-  <link rel="stylesheet" href="static/css/style.css" />
 </head>
 <body>
 
@@ -42,11 +76,14 @@
        STICKY NAV
        ========================================================= -->
   <nav class="enc-nav" role="navigation" aria-label="main navigation">
-    <a class="enc-nav-brand" href="#top">ENC-Bench</a>
+    <a class="enc-nav-brand" href="#top">
+      ENC-Bench <span class="enc-nav-cvpr">@ CVPR 2026</span>
+    </a>
     <ul class="enc-nav-links">
       <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#pipeline">Pipeline</a></li>
+      <li><a href="#comparison">ENC vs Maps</a></li>
       <li><a href="#results">Results</a></li>
-      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#team">Authors</a></li>
       <li><a href="#bibtex">Cite</a></li>
     </ul>
@@ -66,19 +103,17 @@
       </h1>
 
       <div class="enc-authors">
-        <span class="enc-author"><a href="#team" class="enc-author-link">Ao Cheng</a><sup>1†</sup></span>,&nbsp;
-        <span class="enc-author"><a href="#team" class="enc-author-link">Xingming Li</a><sup>1†</sup></span>,&nbsp;
+        <span class="enc-author"><a href="#team" class="enc-author-link">Ao Cheng</a><sup>1</sup></span>,&nbsp;
+        <span class="enc-author"><a href="#team" class="enc-author-link">Xingming Li</a><sup>1</sup></span>,&nbsp;
         <span class="enc-author"><a href="#team" class="enc-author-link">Xuanyu Ji</a><sup>1</sup></span>,&nbsp;
         <span class="enc-author"><a href="#team" class="enc-author-link">Xixiang He</a><sup>1</sup></span>,&nbsp;
         <span class="enc-author"><a href="#team" class="enc-author-link">Qiyao Sun</a><sup>1</sup></span>,&nbsp;
         <span class="enc-author"><a href="#team" class="enc-author-link">Chunping Qiu</a><sup>2</sup></span>,&nbsp;
         <span class="enc-author"><a href="#team" class="enc-author-link">Runke Huang</a><sup>3</sup></span>,&nbsp;
-        <span class="enc-author"><a href="mailto:huqingyong15@outlook.com" class="enc-author-link">Qingyong Hu</a><sup>2*</sup></span>
+        <span class="enc-author"><a href="mailto:huqingyong15@outlook.com" class="enc-author-link">Qingyong Hu</a><sup>2†</sup></span>
       </div>
 
-      <p class="enc-author-note">
-        <sup>†</sup> Equal contribution &nbsp;&nbsp; <sup>*</sup> Corresponding author
-      </p>
+      <p class="enc-author-note"><sup>†</sup> Corresponding author</p>
 
       <div class="enc-affiliations">
         <span class="enc-affil-badge"><sup>1</sup> National University of Defense Technology</span>
@@ -105,6 +140,18 @@
         </a>
       </div>
 
+      <!-- CVPR venue photo -->
+      <div class="enc-venue-bar">
+        <img src="static/images/cvpr-denver-2026.jpg"
+             alt="CVPR 2026 · Denver, Colorado"
+             class="enc-venue-img"
+             loading="lazy"
+             decoding="async" />
+        <div class="enc-venue-overlay">
+          <span class="enc-venue-text">CVPR 2026 &mdash; Denver, Colorado</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -119,12 +166,14 @@
           alt="Teaser — Overview of ENC-Bench benchmark structure, tasks, and evaluated models"
           class="enc-full-img"
           loading="eager"
+          decoding="async"
+          fetchpriority="high"
         />
         <figcaption class="enc-figcaption">
-          <strong>Overview of ENC-Bench.</strong> Our benchmark encompasses 840 authentic NOAA Electronic
-          Navigational Charts and 20,490 expert-validated QA samples spanning a three-level task hierarchy:
-          Perception, Spatial Reasoning, and Maritime Decision-Making. We evaluate 10 state-of-the-art
-          Multimodal Large Language Models under a unified zero-shot protocol.
+          <strong>Overview of ENC-Bench.</strong> Our benchmark encompasses 840 authentic NOAA
+          Electronic Navigational Charts and 20,490 expert-validated QA samples spanning a
+          three-level task hierarchy: Perception, Spatial Reasoning, and Maritime
+          Decision-Making. We evaluate 10 state-of-the-art MLLMs under a unified zero-shot protocol.
         </figcaption>
       </figure>
     </div>
@@ -138,30 +187,30 @@
       <h2 class="enc-section-title">Abstract</h2>
       <div class="enc-abstract-body">
         <p>
-          Electronic Navigational Charts (ENCs) are the safety-critical backbone of modern maritime navigation,
-          yet it remains unclear whether multimodal large language models (MLLMs) can reliably interpret them.
-          Unlike natural images or conventional charts, ENCs encode regulations, bathymetry, and route
-          constraints via standardized vector symbols, scale-dependent rendering, and precise geometric
-          structure—requiring specialized maritime expertise for interpretation.
+          Electronic Navigational Charts (ENCs) are the safety-critical backbone of modern maritime
+          navigation, yet it remains unclear whether multimodal large language models (MLLMs) can
+          reliably interpret them. Unlike natural images or conventional charts, ENCs encode
+          regulations, bathymetry, and route constraints via standardized vector symbols,
+          scale-dependent rendering, and precise geometric structure — requiring specialized
+          maritime expertise for interpretation.
         </p>
         <p>
-          We introduce <strong>ENC-Bench</strong>, the first benchmark dedicated to professional ENC
-          understanding. ENC-Bench contains <strong>20,490 expert-validated samples</strong> from
-          <strong>840 authentic NOAA ENCs</strong>, organized into a three-level hierarchy:
+          We introduce <strong>ENC-Bench</strong>, the first benchmark dedicated to professional
+          ENC understanding. ENC-Bench contains <strong>20,490 expert-validated samples</strong>
+          from <strong>840 authentic NOAA ENCs</strong>, organized into a three-level hierarchy:
           <em>Perception</em> (symbol and feature recognition), <em>Spatial Reasoning</em>
           (coordinate localization, bearing, distance), and <em>Maritime Decision-Making</em>
-          (route legality, safety assessment, emergency planning under multiple constraints). All
-          samples are generated from raw S-57 data through a calibrated vector-to-image pipeline
-          with automated consistency checks and expert review.
+          (route legality, safety assessment, emergency planning under multiple constraints).
+          All samples are generated from raw S-57 data through a calibrated vector-to-image
+          pipeline with automated consistency checks and expert review.
         </p>
         <p>
-          We evaluate 10 state-of-the-art MLLMs such as GPT-4o, Gemini 2.5, Qwen3-VL, InternVL3,
-          and GLM-4.5V under a unified zero-shot protocol. The best model achieves only
-          <strong>47.88% accuracy</strong>, with systematic challenges in symbolic grounding, spatial
-          computation, multi-constraint reasoning, and robustness to lighting and scale variations.
-          By establishing the first rigorous ENC benchmark, we open a new research frontier at the
-          intersection of specialized symbolic reasoning and safety-critical AI, providing essential
-          infrastructure for advancing MLLMs toward professional maritime applications.
+          We evaluate 10 state-of-the-art MLLMs such as GPT-4o, Gemini 2.5, Qwen3-VL,
+          InternVL3, and GLM-4.5V under a unified zero-shot protocol. The best model achieves
+          only <strong>47.88% accuracy</strong>, with systematic challenges in symbolic grounding,
+          spatial computation, multi-constraint reasoning, and robustness to lighting and scale
+          variations. By establishing the first rigorous ENC benchmark, we open a new research
+          frontier at the intersection of specialized symbolic reasoning and safety-critical AI.
         </p>
       </div>
     </div>
@@ -170,263 +219,209 @@
   <!-- =========================================================
        4. STATS BAR
        ========================================================= -->
-  <div class="enc-stats-bar">
-    <div class="enc-stats-inner">
-      <div class="enc-stat-item">
-        <span class="enc-stat-number" data-target="20490">0</span>
-        <span class="enc-stat-label">Samples</span>
-      </div>
-      <div class="enc-stat-divider"></div>
-      <div class="enc-stat-item">
-        <span class="enc-stat-number" data-target="840">0</span>
-        <span class="enc-stat-label">NOAA Charts</span>
-      </div>
-      <div class="enc-stat-divider"></div>
-      <div class="enc-stat-item">
-        <span class="enc-stat-number" data-target="10">0</span>
-        <span class="enc-stat-label">Task Types</span>
-      </div>
-      <div class="enc-stat-divider"></div>
-      <div class="enc-stat-item">
-        <span class="enc-stat-number" data-target="10">0</span>
-        <span class="enc-stat-label">MLLMs Evaluated</span>
+  <div class="enc-stats-section">
+    <div class="container is-max-desktop">
+      <p class="enc-stats-heading">Dataset Highlights</p>
+      <div class="enc-stats-inner">
+        <div class="enc-stat-item">
+          <span class="enc-stat-number" data-target="20490">0</span>
+          <span class="enc-stat-label">Samples</span>
+        </div>
+        <div class="enc-stat-divider"></div>
+        <div class="enc-stat-item">
+          <span class="enc-stat-number" data-target="840">0</span>
+          <span class="enc-stat-label">NOAA Charts</span>
+        </div>
+        <div class="enc-stat-divider"></div>
+        <div class="enc-stat-item">
+          <span class="enc-stat-number" data-target="10">0</span>
+          <span class="enc-stat-label">Task Types</span>
+        </div>
+        <div class="enc-stat-divider"></div>
+        <div class="enc-stat-item">
+          <span class="enc-stat-number" data-target="10">0</span>
+          <span class="enc-stat-label">MLLMs Evaluated</span>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- =========================================================
-       5. COMPARISON SLIDER
+       5. DATA GENERATION PIPELINE (standalone, full-width)
+       ========================================================= -->
+  <section class="section enc-section-light enc-fade-in" id="pipeline">
+    <div class="container is-max-desktop">
+      <h2 class="enc-section-title">Data Generation Pipeline</h2>
+      <p class="enc-section-subtitle">
+        840 authentic NOAA charts are processed through a calibrated S-57
+        vector-to-image pipeline with automated consistency checks and expert validation.
+      </p>
+      <figure>
+        <img
+          src="static/images/pipeline.png"
+          alt="ENC-Bench data generation pipeline from raw S-57 NOAA charts to expert-validated QA pairs"
+          class="enc-full-img enc-pipeline-img"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       6. ENC vs CONVENTIONAL MAPS (comparison slider + lighting modes)
        ========================================================= -->
   <section class="section enc-section-white enc-fade-in" id="comparison">
     <div class="container is-max-desktop">
       <h2 class="enc-section-title">ENC vs. Conventional Maps</h2>
       <p class="enc-section-subtitle">
-        Drag the slider to compare standard map views with Electronic Navigational Charts.
-        ENCs encode safety-critical maritime data unavailable in consumer mapping services.
+        Electronic Navigational Charts encode safety-critical maritime data — bathymetry,
+        navigation aids, regulatory zones — unavailable in consumer mapping services.
+        Drag the slider to compare.
       </p>
 
+      <!-- Comparison slider: Google Maps Standard vs NOAA ENC -->
       <div class="enc-slider-wrapper">
         <img-comparison-slider>
           <div slot="first" class="enc-slider-panel">
             <img
-              src="static/images/google-vs-enc-comparison.png"
-              alt="Google Maps Standard View and Satellite Imagery"
-              class="enc-slider-img enc-slider-img--left"
+              src="static/images/google-standard.png"
+              alt="Google Maps Standard View"
+              class="enc-slider-img"
               loading="lazy"
+              decoding="async"
             />
-            <div class="enc-slider-label">Google Maps / Satellite</div>
+            <div class="enc-slider-label">Google Maps</div>
           </div>
           <div slot="second" class="enc-slider-panel">
             <img
-              src="static/images/google-vs-enc-comparison.png"
-              alt="NOAA Electronic Navigational Chart (ENC)"
-              class="enc-slider-img enc-slider-img--right"
+              src="static/images/noaa-enc.png"
+              alt="NOAA Electronic Navigational Chart"
+              class="enc-slider-img"
               loading="lazy"
+              decoding="async"
             />
             <div class="enc-slider-label enc-slider-label--right">NOAA ENC</div>
           </div>
         </img-comparison-slider>
       </div>
 
-      <p class="enc-figcaption" style="margin-top:1.2rem;">
-        Comparison of the same geographic region across (a) Google Maps Standard View,
-        (b) Google Maps Satellite Imagery, and (c) NOAA Electronic Navigational Chart (ENC).
-        ENCs provide precise bathymetric data, navigation aids, hazard markers, and
-        regulatory zones essential for safe maritime navigation.
-      </p>
+      <!-- Three lighting modes -->
+      <div class="enc-lighting-section">
+        <p class="enc-lighting-title">ENC Lighting Modes</p>
+        <p class="enc-lighting-subtitle">
+          ENC-Bench covers three official lighting modes used in real maritime navigation systems.
+        </p>
+        <div class="columns is-mobile enc-lighting-grid">
+          <div class="column">
+            <div class="enc-lighting-card">
+              <img
+                src="static/images/day-mode.png"
+                alt="ENC Day Mode"
+                class="enc-lighting-img"
+                loading="lazy"
+                decoding="async"
+              />
+              <p class="enc-lighting-label">
+                <span class="enc-mode-dot enc-mode-day"></span>
+                Day Mode
+              </p>
+            </div>
+          </div>
+          <div class="column">
+            <div class="enc-lighting-card">
+              <img
+                src="static/images/dusk-mode.png"
+                alt="ENC Dusk Mode"
+                class="enc-lighting-img"
+                loading="lazy"
+                decoding="async"
+              />
+              <p class="enc-lighting-label">
+                <span class="enc-mode-dot enc-mode-dusk"></span>
+                Dusk Mode
+              </p>
+            </div>
+          </div>
+          <div class="column">
+            <div class="enc-lighting-card">
+              <img
+                src="static/images/night-mode.png"
+                alt="ENC Night Mode"
+                class="enc-lighting-img"
+                loading="lazy"
+                decoding="async"
+              />
+              <p class="enc-lighting-label">
+                <span class="enc-mode-dot enc-mode-night"></span>
+                Night Mode
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="enc-figcaption" style="margin-top:0.6rem;">
+          Each sample in ENC-Bench is rendered in all three official IEC 61174 lighting
+          modes (Day, Dusk, Night), totalling 6,830 samples per mode.
+        </p>
+      </div>
+
     </div>
   </section>
 
   <!-- =========================================================
-       6. BENCHMARK RESULTS
+       7. DATASET COMPARISON (standalone)
        ========================================================= -->
-  <section class="section enc-section-light enc-fade-in" id="results">
+  <section class="section enc-section-light enc-fade-in" id="dataset-comparison">
     <div class="container is-max-desktop">
-      <h2 class="enc-section-title">Benchmark Results</h2>
+      <h2 class="enc-section-title">Dataset Comparison</h2>
       <p class="enc-section-subtitle">
-        Zero-shot performance of 10 state-of-the-art MLLMs across all ENC-Bench task categories.
-        The best model (Gemini-2.5-Pro) achieves only 47.88% overall accuracy.
+        ENC-Bench is the first benchmark specifically designed for ENC understanding,
+        significantly surpassing prior maritime and chart datasets in scale and task diversity.
       </p>
-
-      <figure class="enc-results-figure">
+      <figure>
         <img
-          src="static/images/benchmark-result.png"
-          alt="Benchmark results — accuracy of 10 MLLMs across all ENC-Bench task categories"
+          src="static/images/dataset-comparison.png"
+          alt="Comparison of ENC-Bench with prior maritime and chart understanding datasets"
           class="enc-full-img"
           loading="lazy"
+          decoding="async"
         />
         <figcaption class="enc-figcaption">
-          <strong>Figure 2.</strong> Radar chart showing per-task accuracy for all evaluated MLLMs.
-          All models struggle significantly on Spatial Reasoning and Maritime Decision-Making tasks.
+          <strong>Figure 2.</strong> Comparison of ENC-Bench with prior datasets.
+          ENC-Bench uniquely combines large scale, hierarchical task design, and expert-validated
+          annotations rooted in IHO S-57 standards.
         </figcaption>
       </figure>
-
-      <!-- Summary table -->
-      <div class="enc-table-wrapper">
-        <table class="table is-fullwidth is-striped is-hoverable enc-results-table">
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Type</th>
-              <th>Perception (%)</th>
-              <th>Spatial Reasoning (%)</th>
-              <th>Decision-Making (%)</th>
-              <th>Overall (%)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Gemini-2.5-Pro</strong></td>
-              <td>Proprietary</td>
-              <td>—</td><td>—</td><td>—</td>
-              <td class="enc-top-score">47.88 ★</td>
-            </tr>
-            <tr>
-              <td>GPT-4o</td>
-              <td>Proprietary</td>
-              <td>—</td><td>—</td><td>—</td><td>—</td>
-            </tr>
-            <tr>
-              <td>Qwen3-VL</td>
-              <td>Open-source</td>
-              <td>—</td><td>—</td><td>—</td><td>—</td>
-            </tr>
-            <tr>
-              <td>InternVL3</td>
-              <td>Open-source</td>
-              <td>—</td><td>—</td><td>—</td><td>—</td>
-            </tr>
-            <tr>
-              <td>GLM-4.5V</td>
-              <td>Open-source</td>
-              <td>—</td><td>—</td><td>—</td><td>—</td>
-            </tr>
-            <tr>
-              <td>Llama-4</td>
-              <td>Open-source</td>
-              <td>—</td><td>—</td><td>—</td><td>—</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="enc-table-note">
-        ★ Best model. Full per-task breakdown and all 10 model scores are available in the paper.
-        Cells marked — will be updated upon paper release.
-      </p>
-
-      <!-- Error distribution figure -->
-      <div style="margin-top: 2.5rem;">
-        <figure>
-          <img
-            src="static/images/error-distribution.png"
-            alt="Error distribution analysis of Gemini-2.5-Pro on ENC-Bench"
-            class="enc-full-img"
-            loading="lazy"
-          />
-          <figcaption class="enc-figcaption">
-            <strong>Figure 3.</strong> Error distribution analysis of the best-performing model
-            (Gemini-2.5-Pro), revealing systematic failure modes in symbolic grounding and
-            multi-constraint reasoning.
-          </figcaption>
-        </figure>
-      </div>
     </div>
   </section>
 
   <!-- =========================================================
-       7. DATASET GALLERY
+       8. DATASET SAMPLES (IHO S-57 Symbology + Key Statistics)
        ========================================================= -->
-  <section class="section enc-section-white enc-fade-in" id="gallery">
+  <section class="section enc-section-white enc-fade-in" id="dataset">
     <div class="container is-max-desktop">
-      <h2 class="enc-section-title">Dataset Gallery</h2>
+      <h2 class="enc-section-title">Dataset Statistics</h2>
       <p class="enc-section-subtitle">
-        Click any image to view full size. Key figures from the ENC-Bench dataset and benchmark.
-      </p>
-
-      <div class="columns is-multiline enc-gallery-grid">
-
-        <div class="column is-one-third-desktop is-half-tablet">
-          <a href="static/images/symbology-types.png"
-             class="gallery-item enc-gallery-item"
-             title="Standardized IHO S-57 Symbology Types">
-            <img src="static/images/symbology-types.png"
-                 alt="Standardized IHO S-57 Symbology Types"
-                 class="enc-gallery-thumb" loading="lazy" />
-            <p class="enc-gallery-caption">IHO S-57 Symbology Types</p>
-          </a>
-        </div>
-
-        <div class="column is-one-third-desktop is-half-tablet">
-          <a href="static/images/dataset-comparison.png"
-             class="gallery-item enc-gallery-item"
-             title="Dataset Comparison with Prior Work">
-            <img src="static/images/dataset-comparison.png"
-                 alt="Dataset Comparison with prior ENC and maritime datasets"
-                 class="enc-gallery-thumb" loading="lazy" />
-            <p class="enc-gallery-caption">Dataset Comparison</p>
-          </a>
-        </div>
-
-        <div class="column is-one-third-desktop is-half-tablet">
-          <a href="static/images/teaser-overview.png"
-             class="gallery-item enc-gallery-item"
-             title="ENC-Bench Benchmark Overview">
-            <img src="static/images/teaser-overview.png"
-                 alt="ENC-Bench Benchmark Overview"
-                 class="enc-gallery-thumb" loading="lazy" />
-            <p class="enc-gallery-caption">Benchmark Overview</p>
-          </a>
-        </div>
-
-        <div class="column is-one-third-desktop is-half-tablet">
-          <a href="static/images/google-vs-enc-comparison.png"
-             class="gallery-item enc-gallery-item"
-             title="Google Maps vs NOAA ENC Comparison">
-            <img src="static/images/google-vs-enc-comparison.png"
-                 alt="Comparison: Google Maps Standard View, Satellite, and NOAA ENC"
-                 class="enc-gallery-thumb" loading="lazy" />
-            <p class="enc-gallery-caption">Google Maps vs. NOAA ENC</p>
-          </a>
-        </div>
-
-        <div class="column is-one-third-desktop is-half-tablet">
-          <a href="static/images/benchmark-result.png"
-             class="gallery-item enc-gallery-item"
-             title="Benchmark Results Radar Chart">
-            <img src="static/images/benchmark-result.png"
-                 alt="Benchmark results radar chart for all evaluated MLLMs"
-                 class="enc-gallery-thumb" loading="lazy" />
-            <p class="enc-gallery-caption">Benchmark Results</p>
-          </a>
-        </div>
-
-        <div class="column is-one-third-desktop is-half-tablet">
-          <a href="static/images/error-distribution.png"
-             class="gallery-item enc-gallery-item"
-             title="Error Distribution — Gemini-2.5-Pro">
-            <img src="static/images/error-distribution.png"
-                 alt="Error distribution analysis of Gemini-2.5-Pro"
-                 class="enc-gallery-thumb" loading="lazy" />
-            <p class="enc-gallery-caption">Error Analysis (Gemini-2.5-Pro)</p>
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================================
-       8. DATA STATISTICS
-       ========================================================= -->
-  <section class="section enc-section-light enc-fade-in" id="data">
-    <div class="container is-max-desktop">
-      <h2 class="enc-section-title">Dataset Statistics &amp; Pipeline</h2>
-      <p class="enc-section-subtitle">
-        ENC-Bench is built from 840 authentic NOAA ENCs via a fully-automated S-57 data generation
-        pipeline with expert validation.
+        20,490 samples spanning 10 task categories, 3 lighting modes, and 6 scale levels,
+        covering 384 IHO S-57 standardized symbol types.
       </p>
 
       <div class="columns is-vcentered enc-data-columns">
+        <div class="column is-half">
+          <figure>
+            <img
+              src="static/images/symbology-types.png"
+              alt="Standardized IHO S-57 Symbology Types covered in ENC-Bench"
+              class="enc-full-img"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="enc-figcaption">
+              <strong>Figure 3.</strong> 384 IHO S-57 standardized symbol types covered by
+              ENC-Bench, spanning buoys, depth contours, hazard markers, and navigational aids.
+            </figcaption>
+          </figure>
+        </div>
         <div class="column is-half">
           <figure>
             <img
@@ -434,25 +429,12 @@
               alt="Key statistics of ENC-Bench — task distribution and sample counts"
               class="enc-full-img"
               loading="lazy"
+              decoding="async"
             />
             <figcaption class="enc-figcaption">
-              <strong>Figure 4.</strong> Key statistics of ENC-Bench, showing the distribution of
-              20,490 samples across 10 task categories, 3 lighting modes, and 6 scale levels.
-            </figcaption>
-          </figure>
-        </div>
-        <div class="column is-half">
-          <figure>
-            <img
-              src="static/images/pipeline.png"
-              alt="ENC-Bench data generation pipeline from raw S-57 NOAA charts to QA pairs"
-              class="enc-full-img"
-              loading="lazy"
-            />
-            <figcaption class="enc-figcaption">
-              <strong>Figure 5.</strong> ENC-Bench data generation pipeline. Raw S-57 data from NOAA
-              is processed through a calibrated vector-to-image renderer, paired with automated QA
-              templates, and validated by domain experts.
+              <strong>Figure 4.</strong> Sample distribution across 10 task categories,
+              3 lighting modes (Day / Dusk / Night), and 6 scale levels
+              (1:50k – 1:300k).
             </figcaption>
           </figure>
         </div>
@@ -461,7 +443,53 @@
   </section>
 
   <!-- =========================================================
-       9. BIBTEX
+       9. BENCHMARK RESULTS
+       ========================================================= -->
+  <section class="section enc-section-light enc-fade-in" id="results">
+    <div class="container is-max-desktop">
+      <h2 class="enc-section-title">Benchmark Results</h2>
+      <p class="enc-section-subtitle">
+        Zero-shot performance of 10 state-of-the-art MLLMs across all ENC-Bench task categories.
+        The best model (Gemini-2.5-Pro) achieves only <strong>47.88%</strong> overall accuracy,
+        revealing significant room for improvement.
+      </p>
+
+      <figure>
+        <img
+          src="static/images/benchmark-result.png"
+          alt="Benchmark results — accuracy of 10 MLLMs across all ENC-Bench task categories"
+          class="enc-full-img"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="enc-figcaption">
+          <strong>Figure 5.</strong> Performance of 10 state-of-the-art MLLMs on ENC-Bench tasks.
+          All models struggle significantly on Spatial Reasoning and Maritime Decision-Making,
+          revealing critical gaps in specialized symbolic understanding.
+        </figcaption>
+      </figure>
+
+      <div style="margin-top: 2.5rem;">
+        <figure>
+          <img
+            src="static/images/error-distribution.png"
+            alt="Error distribution analysis of Gemini-2.5-Pro on ENC-Bench"
+            class="enc-full-img"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption class="enc-figcaption">
+            <strong>Figure 6.</strong> Error distribution analysis of the best-performing model
+            (Gemini-2.5-Pro), identifying symbolic grounding failures and multi-constraint
+            reasoning deficiencies as the dominant error modes.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       10. BIBTEX
        ========================================================= -->
   <section class="section enc-section-white enc-fade-in" id="bibtex">
     <div class="container is-max-desktop">
@@ -497,7 +525,7 @@
   </section>
 
   <!-- =========================================================
-       10. AUTHORS & CONTACT
+       11. AUTHORS & CONTACT
        ========================================================= -->
   <section class="section enc-section-light enc-fade-in" id="team">
     <div class="container is-max-desktop">
@@ -505,62 +533,56 @@
 
       <div class="columns is-multiline enc-author-grid" style="margin-top: 1.5rem;">
 
-        <!-- Ao Cheng -->
         <div class="column is-one-quarter-desktop is-one-third-tablet enc-author-card-col">
           <div class="enc-author-card">
             <div class="enc-author-photo-wrap">
-              <img src="static/images/bio/ao-cheng.jpg" alt="Ao Cheng" class="enc-author-photo" loading="lazy" />
+              <img src="static/images/bio/ao-cheng.jpg" alt="Ao Cheng" class="enc-author-photo" loading="lazy" decoding="async" />
             </div>
-            <p class="enc-author-name">Ao Cheng <sup style="color:#888;">†</sup></p>
+            <p class="enc-author-name">Ao Cheng</p>
             <p class="enc-author-affil">NUDT</p>
           </div>
         </div>
 
-        <!-- Xingming Li -->
         <div class="column is-one-quarter-desktop is-one-third-tablet enc-author-card-col">
           <div class="enc-author-card">
             <div class="enc-author-photo-wrap">
-              <img src="static/images/bio/xingming-li.jpg" alt="Xingming Li" class="enc-author-photo" loading="lazy" />
+              <img src="static/images/bio/xingming-li.jpg" alt="Xingming Li" class="enc-author-photo" loading="lazy" decoding="async" />
             </div>
-            <p class="enc-author-name">Xingming Li <sup style="color:#888;">†</sup></p>
+            <p class="enc-author-name">Xingming Li</p>
             <p class="enc-author-affil">NUDT</p>
           </div>
         </div>
 
-        <!-- Xuanyu Ji -->
         <div class="column is-one-quarter-desktop is-one-third-tablet enc-author-card-col">
           <div class="enc-author-card">
             <div class="enc-author-photo-wrap">
-              <img src="static/images/bio/xuanyu-ji.jpg" alt="Xuanyu Ji" class="enc-author-photo" loading="lazy" />
+              <img src="static/images/bio/xuanyu-ji.jpg" alt="Xuanyu Ji" class="enc-author-photo" loading="lazy" decoding="async" />
             </div>
             <p class="enc-author-name">Xuanyu Ji</p>
             <p class="enc-author-affil">NUDT</p>
           </div>
         </div>
 
-        <!-- Xixiang He -->
         <div class="column is-one-quarter-desktop is-one-third-tablet enc-author-card-col">
           <div class="enc-author-card">
             <div class="enc-author-photo-wrap">
-              <img src="static/images/bio/xixiang-he.jpg" alt="Xixiang He" class="enc-author-photo" loading="lazy" />
+              <img src="static/images/bio/xixiang-he.jpg" alt="Xixiang He" class="enc-author-photo" loading="lazy" decoding="async" />
             </div>
             <p class="enc-author-name">Xixiang He</p>
             <p class="enc-author-affil">NUDT</p>
           </div>
         </div>
 
-        <!-- Qiyao Sun -->
         <div class="column is-one-quarter-desktop is-one-third-tablet enc-author-card-col">
           <div class="enc-author-card">
             <div class="enc-author-photo-wrap">
-              <img src="static/images/bio/qiyao-sun.png" alt="Qiyao Sun" class="enc-author-photo" loading="lazy" />
+              <img src="static/images/bio/qiyao-sun.png" alt="Qiyao Sun" class="enc-author-photo" loading="lazy" decoding="async" />
             </div>
             <p class="enc-author-name">Qiyao Sun</p>
             <p class="enc-author-affil">NUDT</p>
           </div>
         </div>
 
-        <!-- Chunping Qiu (no photo) -->
         <div class="column is-one-quarter-desktop is-one-third-tablet enc-author-card-col">
           <div class="enc-author-card">
             <div class="enc-author-photo-wrap">
@@ -571,24 +593,23 @@
           </div>
         </div>
 
-        <!-- Runke Huang -->
         <div class="column is-one-quarter-desktop is-one-third-tablet enc-author-card-col">
           <div class="enc-author-card">
             <div class="enc-author-photo-wrap">
-              <img src="static/images/bio/runke-huang.png" alt="Runke Huang" class="enc-author-photo" loading="lazy" />
+              <img src="static/images/bio/runke-huang.png" alt="Runke Huang" class="enc-author-photo" loading="lazy" decoding="async" />
             </div>
             <p class="enc-author-name">Runke Huang</p>
             <p class="enc-author-affil">CUHK</p>
           </div>
         </div>
 
-        <!-- Qingyong Hu — corresponding author, highlighted -->
+        <!-- Corresponding author — highlighted -->
         <div class="column is-one-quarter-desktop is-one-third-tablet enc-author-card-col">
           <div class="enc-author-card enc-author-card--contact">
             <div class="enc-author-photo-wrap">
-              <img src="static/images/bio/qingyong-hu.jpg" alt="Qingyong Hu" class="enc-author-photo" loading="lazy" />
+              <img src="static/images/bio/qingyong-hu.jpg" alt="Qingyong Hu" class="enc-author-photo" loading="lazy" decoding="async" />
             </div>
-            <p class="enc-author-name">Qingyong Hu <sup style="color:#1a2744;">*</sup></p>
+            <p class="enc-author-name">Qingyong Hu <sup style="color:#1a2744;">†</sup></p>
             <p class="enc-author-affil">Intelligent Game &amp; Decision Lab</p>
             <a href="mailto:huqingyong15@outlook.com" class="enc-contact-link">
               <span class="icon is-small"><i class="fas fa-envelope"></i></span>
@@ -599,38 +620,31 @@
 
       </div>
 
-      <p class="enc-author-note has-text-centered" style="margin-top:1.2rem;">
-        <sup>†</sup> Equal contribution &nbsp;&nbsp; <sup>*</sup> Corresponding author
+      <p class="enc-author-note has-text-centered" style="margin-top:1rem;">
+        <sup>†</sup> Corresponding author
       </p>
     </div>
   </section>
 
   <!-- =========================================================
-       11. VISITOR MAP (ClustrMaps)
+       12. VISITOR MAP (mapmyvisitors)
        ========================================================= -->
   <div class="enc-visitor-map-section">
-    <p class="enc-visitor-label">Visitor Map</p>
+    <p class="enc-visitor-label">Visitors Around the World</p>
     <div class="enc-clustrmap-container">
-      <!--
-        Register your site at https://clustrmaps.com to get a widget ID.
-        Replace REPLACE_WITH_YOUR_CLUSTRMAP_ID with your actual ID.
-        Example: src="//clustrmaps.com/map_v2.js?d=AbCdEfGh&cl=ffffff&w=a"
-      -->
-      <script
-        type="text/javascript"
-        id="clustrmaps"
-        src="//clustrmaps.com/map_v2.js?d=REPLACE_WITH_YOUR_CLUSTRMAP_ID&cl=ffffff&w=a"
-      ></script>
+      <script type="text/javascript" id="mapmyvisitors"
+        src="//mapmyvisitors.com/map.js?d=fdS-BYC0atlbZr1gw0Dp35bJHxIoL7VUIzriZTWBWsQ&cl=ffffff&w=a">
+      </script>
       <noscript>
-        <a href="https://clustrmaps.com" title="ENC-Bench Visitor Map">
-          <img src="//www.clustrmaps.com/map_v2.png?d=REPLACE_WITH_YOUR_CLUSTRMAP_ID&cl=ffffff" alt="Visitor map" />
+        <a href="https://mapmyvisitors.com/web/1c3fx" title="Visit tracker">
+          <img src="https://mapmyvisitors.com/map.png?d=fdS-BYC0atlbZr1gw0Dp35bJHxIoL7VUIzriZTWBWsQ&cl=ffffff" alt="Visitor map" />
         </a>
       </noscript>
     </div>
   </div>
 
   <!-- =========================================================
-       12. FOOTER
+       13. FOOTER
        ========================================================= -->
   <footer class="enc-footer">
     <div class="container has-text-centered">
@@ -644,7 +658,7 @@
     </div>
   </footer>
 
-  <!-- External JS (loaded at end of body for performance) -->
+  <!-- JS at end of body for performance -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.js" crossorigin="anonymous"></script>
   <script src="static/js/index.js"></script>
 

@@ -1,0 +1,8 @@
+# Source assets (kept locally, not needed for GitHub Pages)
+figs/
+bio/
+*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
