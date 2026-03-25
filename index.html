@@ -72,6 +72,42 @@
 </head>
 <body>
 
+<!-- ═══════════════════════════════════════════════════════════
+     MORE WORKS DROPDOWN (fixed top-right)
+═══════════════════════════════════════════════════════════ -->
+<div class="more-works-container">
+  <button class="more-works-btn" id="moreWorksBtn" aria-expanded="false">
+    <i class="fas fa-th-large"></i> More Works <i class="fas fa-chevron-down"></i>
+  </button>
+  <div class="more-works-dropdown" id="moreWorksDropdown" role="menu">
+    <div class="dropdown-header">Our Group's Research</div>
+
+    <a href="https://qingyonghu.github.io/Efficient-Hallucination-Detection/" target="_blank" rel="noopener" class="work-item" role="menuitem">
+      <span class="work-item-badge work-item-badge--aaai">AAAI</span>
+      <div class="work-item-info">
+        <strong>Efficient-HD</strong>
+        <span>Efficient Hallucination Detection</span>
+      </div>
+    </a>
+
+    <a href="https://qingyonghu.github.io/Interaction2Eval/" target="_blank" rel="noopener" class="work-item" role="menuitem">
+      <span class="work-item-badge work-item-badge--aied">AIED</span>
+      <div class="work-item-info">
+        <strong>Interaction2Eval</strong>
+        <span>Interaction-based Evaluation Framework</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/QingyongHu" target="_blank" rel="noopener" class="work-item" role="menuitem">
+      <span class="work-item-badge work-item-badge--gh">GitHub</span>
+      <div class="work-item-info">
+        <strong>More Projects</strong>
+        <span>All publications &amp; repos</span>
+      </div>
+    </a>
+  </div>
+</div>
+
   <!-- =========================================================
        STICKY NAV
        ========================================================= -->
@@ -691,44 +727,6 @@
       </p>
     </div>
   </footer>
-
-  <!-- =========================================================
-       MORE WORKS DROPDOWN (fixed top-right)
-       ========================================================= -->
-  <div class="more-works-container" id="moreWorksContainer">
-    <button class="more-works-btn" id="moreWorksBtn" aria-expanded="false" aria-haspopup="true">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-      More Works
-      <svg class="mw-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown" role="menu">
-      <div class="mw-header">Our Group&rsquo;s Research</div>
-
-      <a href="https://qingyonghu.github.io/Efficient-Hallucination-Detection/" target="_blank" rel="noopener" class="mw-item" role="menuitem">
-        <span class="mw-badge mw-badge--aaai">AAAI</span>
-        <div class="mw-info">
-          <strong>Efficient-HD</strong>
-          <span>Efficient Hallucination Detection</span>
-        </div>
-      </a>
-
-      <a href="https://qingyonghu.github.io/Interaction2Eval/" target="_blank" rel="noopener" class="mw-item" role="menuitem">
-        <span class="mw-badge mw-badge--aied">AIED</span>
-        <div class="mw-info">
-          <strong>Interaction2Eval</strong>
-          <span>Interaction-based Evaluation Framework</span>
-        </div>
-      </a>
-
-      <a href="https://github.com/QingyongHu" target="_blank" rel="noopener" class="mw-item" role="menuitem">
-        <span class="mw-badge mw-badge--gh">GitHub</span>
-        <div class="mw-info">
-          <strong>More Projects</strong>
-          <span>All publications &amp; repos</span>
-        </div>
-      </a>
-    </div>
-  </div>
 
   <!-- JS at end of body for performance -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.js" crossorigin="anonymous"></script>

@@ -71,18 +71,20 @@ document.addEventListener('DOMContentLoaded', function () {
   if (mwBtn && mwDrop) {
     mwBtn.addEventListener('click', function (e) {
       e.stopPropagation();
-      var isOpen = mwDrop.classList.toggle('mw-open');
+      var isOpen = mwDrop.classList.toggle('is-active');
       mwBtn.setAttribute('aria-expanded', String(isOpen));
     });
-    // Close on outside click
-    document.addEventListener('click', function () {
-      mwDrop.classList.remove('mw-open');
-      mwBtn.setAttribute('aria-expanded', 'false');
+    // Close on outside click (only if click is outside dropdown AND button)
+    document.addEventListener('click', function (e) {
+      if (!mwDrop.contains(e.target) && e.target !== mwBtn) {
+        mwDrop.classList.remove('is-active');
+        mwBtn.setAttribute('aria-expanded', 'false');
+      }
     });
     // Close on Escape
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
-        mwDrop.classList.remove('mw-open');
+        mwDrop.classList.remove('is-active');
         mwBtn.setAttribute('aria-expanded', 'false');
       }
     });
