@@ -716,6 +716,11 @@ img-comparison-slider {
 .enc-lighting-card:hover .enc-lighting-img {
   transform: scale(1.06);
 }
+.enc-lighting-link {
+  display: block;
+  overflow: hidden;
+  cursor: zoom-in;
+}
 
 /* Full-width figures — subtle lift on hover */
 .enc-full-img {
@@ -853,7 +858,7 @@ figure:hover .enc-full-img {
    ============================================================ */
 .more-works-container {
   position: fixed;
-  top: 1.5rem;
+  top: 4.2rem;
   right: 1.5rem;
   z-index: 1000;
 }
@@ -955,7 +960,7 @@ figure:hover .enc-full-img {
 }
 
 @media (max-width: 480px) {
-  .more-works-container { top: 1rem; right: 1rem; }
+  .more-works-container { top: 3.8rem; right: 1rem; }
   .more-works-dropdown { width: 260px; }
 }
 @media (max-width: 900px) {

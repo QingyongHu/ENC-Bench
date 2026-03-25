@@ -19,6 +19,15 @@ document.addEventListener('DOMContentLoaded', function () {
       overlayOpacity: 0.94,
       loop: true,
     });
+    // Lighting mode images
+    new SimpleLightbox('.enc-lighting-link', {
+      captionsData: 'title',
+      captionDelay: 200,
+      animationSpeed: 180,
+      fadeSpeed: 120,
+      overlayOpacity: 0.94,
+      loop: true,
+    });
   }
 
   // -- Smooth scroll for in-page anchor links --

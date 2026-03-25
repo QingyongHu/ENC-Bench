@@ -7,11 +7,11 @@
   <meta name="description" content="ENC-Bench — the first benchmark for evaluating Multimodal Large Language Models on Electronic Navigational Chart understanding. 20,490 samples, 840 NOAA charts, 10 task types. CVPR 2026." />
   <meta property="og:title" content="ENC-Bench · CVPR 2026" />
   <meta property="og:description" content="The first benchmark dedicated to professional Electronic Navigational Chart understanding." />
-  <meta property="og:image" content="static/images/teaser-overview.png" />
+  <meta property="og:image" content="static/images/teaser-overview.webp" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Preload critical above-fold image -->
-  <link rel="preload" as="image" href="static/images/teaser-overview.png" fetchpriority="high" />
+  <link rel="preload" as="image" href="static/images/teaser-overview.webp" fetchpriority="high" />
 
   <!-- DNS prefetch for CDNs -->
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
@@ -199,7 +199,7 @@
     <div class="container is-max-desktop">
       <figure class="enc-teaser-figure">
         <img
-          src="static/images/teaser-overview.png"
+          src="static/images/teaser-overview.webp"
           alt="Teaser — Overview of ENC-Bench benchmark structure, tasks, and evaluated models"
           class="enc-full-img"
           loading="eager"
@@ -295,7 +295,7 @@
       </p>
       <figure>
         <img
-          src="static/images/pipeline.png"
+          src="static/images/pipeline.webp"
           alt="ENC-Bench data generation pipeline from raw S-57 NOAA charts to expert-validated QA pairs"
           class="enc-full-img enc-pipeline-img"
           loading="lazy"
@@ -322,7 +322,7 @@
         <img-comparison-slider>
           <div slot="first" class="enc-slider-panel">
             <img
-              src="static/images/google-standard.png"
+              src="static/images/google-standard.webp"
               alt="Google Maps Standard View"
               class="enc-slider-img"
               loading="lazy"
@@ -332,7 +332,7 @@
           </div>
           <div slot="second" class="enc-slider-panel">
             <img
-              src="static/images/noaa-enc.png"
+              src="static/images/noaa-enc.webp"
               alt="NOAA Electronic Navigational Chart"
               class="enc-slider-img"
               loading="lazy"
@@ -349,46 +349,52 @@
         <p class="enc-lighting-subtitle">
           ENC-Bench covers three official lighting modes used in real maritime navigation systems.
         </p>
-        <div class="columns is-mobile enc-lighting-grid">
-          <div class="column">
+        <div class="columns enc-lighting-grid">
+          <div class="column is-one-third-tablet">
             <div class="enc-lighting-card">
-              <img
-                src="static/images/day-mode.png"
-                alt="ENC Day Mode"
-                class="enc-lighting-img"
-                loading="lazy"
-                decoding="async"
-              />
+              <a href="static/images/day-mode.webp" class="enc-lighting-link" title="ENC Day Mode">
+                <img
+                  src="static/images/day-mode.webp"
+                  alt="ENC Day Mode"
+                  class="enc-lighting-img"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
               <p class="enc-lighting-label">
                 <span class="enc-mode-dot enc-mode-day"></span>
                 Day Mode
               </p>
             </div>
           </div>
-          <div class="column">
+          <div class="column is-one-third-tablet">
             <div class="enc-lighting-card">
-              <img
-                src="static/images/dusk-mode.png"
-                alt="ENC Dusk Mode"
-                class="enc-lighting-img"
-                loading="lazy"
-                decoding="async"
-              />
+              <a href="static/images/dusk-mode.webp" class="enc-lighting-link" title="ENC Dusk Mode">
+                <img
+                  src="static/images/dusk-mode.webp"
+                  alt="ENC Dusk Mode"
+                  class="enc-lighting-img"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
               <p class="enc-lighting-label">
                 <span class="enc-mode-dot enc-mode-dusk"></span>
                 Dusk Mode
               </p>
             </div>
           </div>
-          <div class="column">
+          <div class="column is-one-third-tablet">
             <div class="enc-lighting-card">
-              <img
-                src="static/images/night-mode.png"
-                alt="ENC Night Mode"
-                class="enc-lighting-img"
-                loading="lazy"
-                decoding="async"
-              />
+              <a href="static/images/night-mode.webp" class="enc-lighting-link" title="ENC Night Mode">
+                <img
+                  src="static/images/night-mode.webp"
+                  alt="ENC Night Mode"
+                  class="enc-lighting-img"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
               <p class="enc-lighting-label">
                 <span class="enc-mode-dot enc-mode-night"></span>
                 Night Mode
@@ -417,7 +423,7 @@
       </p>
       <figure>
         <img
-          src="static/images/dataset-comparison.png"
+          src="static/images/dataset-comparison.webp"
           alt="Comparison of ENC-Bench with prior maritime and chart understanding datasets"
           class="enc-full-img"
           loading="lazy"
@@ -447,7 +453,7 @@
         <div class="column is-half">
           <figure>
             <img
-              src="static/images/symbology-types.png"
+              src="static/images/symbology-types.webp"
               alt="Standardized IHO S-57 Symbology Types covered in ENC-Bench"
               class="enc-full-img"
               loading="lazy"
@@ -462,7 +468,7 @@
         <div class="column is-half">
           <figure>
             <img
-              src="static/images/key-statistics.png"
+              src="static/images/key-statistics.webp"
               alt="Key statistics of ENC-Bench — task distribution and sample counts"
               class="enc-full-img"
               loading="lazy"
@@ -493,7 +499,7 @@
 
       <figure>
         <img
-          src="static/images/benchmark-result.png"
+          src="static/images/benchmark-result.webp"
           alt="Benchmark results — accuracy of 10 MLLMs across all ENC-Bench task categories"
           class="enc-full-img"
           loading="lazy"
@@ -509,7 +515,7 @@
       <div style="margin-top: 2.5rem;">
         <figure>
           <img
-            src="static/images/error-distribution.png"
+            src="static/images/error-distribution.webp"
             alt="Error distribution analysis of Gemini-2.5-Pro on ENC-Bench"
             class="enc-full-img"
             loading="lazy"
