@@ -65,29 +65,30 @@ document.addEventListener('DOMContentLoaded', function () {
     statsObserver.observe(statsBar);
   }
 
-  // -- Active nav link highlight on scroll --
-  var sections = document.querySelectorAll('section[id], div[id]');
-  var navLinks = document.querySelectorAll('.enc-nav-links a');
-
-  if (navLinks.length > 0) {
-    var scrollSpy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          navLinks.forEach(function (link) {
-            link.classList.remove('enc-nav-active');
-          });
-          var activeLink = document.querySelector('.enc-nav-links a[href="#' + entry.target.id + '"]');
-          if (activeLink) activeLink.classList.add('enc-nav-active');
-        }
-      });
-    }, { rootMargin: '-50% 0px -50% 0px' });
-
-    sections.forEach(function (section) {
-      scrollSpy.observe(section);
+  // -- More Works dropdown toggle --
+  var mwBtn = document.getElementById('moreWorksBtn');
+  var mwDrop = document.getElementById('moreWorksDropdown');
+  if (mwBtn && mwDrop) {
+    mwBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = mwDrop.classList.toggle('mw-open');
+      mwBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    // Close on outside click
+    document.addEventListener('click', function () {
+      mwDrop.classList.remove('mw-open');
+      mwBtn.setAttribute('aria-expanded', 'false');
+    });
+    // Close on Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        mwDrop.classList.remove('mw-open');
+        mwBtn.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
-});
+}); // end DOMContentLoaded
 
 // ============================================================
 // 2. Stats counter animation (ease-out cubic)
