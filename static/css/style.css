@@ -162,12 +162,41 @@ body {
   margin-bottom: 1.4rem;
 }
 
+.enc-conference-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-bottom: 1.4rem;
+}
+
+.enc-conference-badges .enc-conference-badge {
+  margin-bottom: 0;
+}
+
+.enc-conference-badge--highlight {
+  background: #b91c1c;
+  box-shadow: 0 8px 24px rgba(185, 28, 28, 0.18);
+}
+
 .enc-title {
   font-size: 2rem;
   font-weight: 800;
   color: #1a2744;
   line-height: 1.24;
   margin-bottom: 1.4rem;
+}
+
+.enc-highlight-note {
+  max-width: 640px;
+  margin: -0.4rem auto 1.25rem;
+  color: #6a7283;
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.enc-highlight-note strong {
+  color: #b91c1c;
 }
 
 .enc-authors {
